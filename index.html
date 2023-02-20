@@ -1,93 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Azzan Abdullah Alkamali Business Card</title>
-	<style>
-		body {
-			font-family: 'Montserrat', sans-serif;
-			background-color: #F5F5DC;
-			margin: 0;
-			padding: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>قائمة المهام</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-		.card {
-			background-color: #D4AF37;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 20px;
-			border-radius: 10px;
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-		}
+      h1 {
+        text-align: center;
+      }
 
-		h1 {
-			font-size: 36px;
-			color: #FFFFFF;
-			margin-top: 0;
-			text-align: center;
-			text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-		}
+      .container {
+        width: 50%;
+      }
 
-		p {
-			font-size: 24px;
-			color: #FFFFFF;
-			margin: 10px 0;
-			text-align: center;
-			text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-		}
+      ul {
+        padding: 0;
+      }
 
-		.phone-icon, .email-icon {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background-color: #FFFFFF;
-			border-radius: 50%;
-			height: 50px;
-			width: 50px;
-			margin: 10px;
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-		}
+      li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        margin: 10px;
+      }
 
-		.phone-icon i, .email-icon i {
-			font-size: 24px;
-			color: #D4AF37;
-		}
+      input[type="text"] {
+        margin-right: 10px;
+      }
 
-		@media only screen and (max-width: 600px) {
-			h1 {
-				font-size: 28px;
-			}
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>قائمة المهام</h1>
+    <div class="container">
+      <ul id="task-list"></ul>
+      <button onclick="addTask()">إضافة مهمة</button>
+      <button onclick="editTitle()">تعديل العنوان</button>
+      <button onclick="clearList()">مسح القائمة</button>
+      <button onclick="createPDF()">تصدير كملف PDF</button>
+      <button onclick="newList()">قائمة جديدة</button>
+    </div>
 
-			p {
-				font-size: 18px;
-			}
+    <script>
+      let taskList = document.getElementById("task-list");
+      let title = "قائمة المهام";
 
-			.phone-icon, .email-icon {
-				height: 40px;
-				width: 40px;
-			}
+      // Load saved list from local storage
+      let savedList = JSON.parse(localStorage.getItem("taskList"));
+      if (savedList) {
+        for (let i = 0; i < savedList.length; i++) {
+          let count = i + 1;
+          let input = document.createElement("input");
+          input.type = "text";
+          input.value = savedList[i];
+          let li = document.createElement("li");
+          li.appendChild(document.createTextNode(count));
+          li.appendChild(input);
+          taskList.appendChild(li);
+        }
+      }
 
-			.phone-icon i, .email-icon i {
-				font-size: 20px;
-			}
-		}
-	</style>
-</head>
-<body>
-	<div class="card">
-		<h1>Azzan Abdullah Alkamali</h1>
-		<div class="phone-icon"><i class="fas fa-phone-alt"></i></div>
-		<p>+968 97082333</p>
-		<div class="email-icon"><i class="far fa-envelope"></i></div>
-		<p>azzan@alkamali.uk</p>
-	</div>
+      function addTask() {
+        let count = taskList.getElementsByTagName("li").length + 1;
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "مهمة رقم " + count;
+        let li = document.createElement("li");
+        li.appendChild(document.createTextNode(count));
+        li.appendChild(input);
+        taskList.appendChild(li);
+        saveList();
+      }
 
-	<!-- Font Awesome -->
-	<script src="https://kit.fontawesome.com/c1b9cb6c5a.js" crossorigin="anonymous"></script>
-</body>
-</html>
+      function editTitle() {
+        title = prompt("العنوان الجديد:", title);
+        document.getElementsByTagName("title")[0].innerHTML = title;
+        document.getElementsByTagName("h1")[0].innerHTML = title;
+      }
+
+      function clearList() {
+        taskList.innerHTML = "";
+        localStorage.removeItem("taskList");
+      }
+
+      function createPDF() {
+        // Code to generate and download PDF file
+        alert("تم تصدير القائمة بنجاح");
+      }
+
+      function newList() {
+        taskList.innerHTML = "";
+        addTask();
+        title = "قائمة المهام";
+        document.getElementsByTagName
