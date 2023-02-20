@@ -27,4 +27,50 @@ function addTask() {
   let count = taskList.getElementsByTagName("li").length + 1;
   let input = document.createElement("input");
   input.type = "text";
-  input.placeholder = "مه
+  input.placeholder = "مهمة جديدة";
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(count));
+  li.appendChild(input);
+  taskList.appendChild(li);
+}
+
+// Save list to local storage
+function saveList() {
+  let tasks = [];
+  let taskElements = taskList.getElementsByTagName("li");
+  for (let i = 0; i < taskElements.length; i++) {
+    let input = taskElements[i].getElementsByTagName("input")[0];
+    if (input.value) {
+      tasks.push(input.value);
+    }
+  }
+  localStorage.setItem("taskList", JSON.stringify(tasks));
+}
+
+// Edit title
+function editTitle() {
+  let newTitle = prompt("Enter new title:");
+  if (newTitle) {
+    titleElement.innerText = newTitle;
+    h1Element.innerText = newTitle;
+  }
+}
+
+// Clear list
+function clearList() {
+  taskList.innerHTML = "";
+  localStorage.removeItem("taskList");
+}
+
+// New list
+function newList() {
+  clearList();
+  editTitle();
+}
+
+// Add event listeners
+addTaskButton.addEventListener("click", addTask);
+taskList.addEventListener("blur", saveList, true);
+editTitleButton.addEventListener("click", editTitle);
+clearListButton.addEventListener("click", clearList);
+newListButton.addEventListener("click", newList);
