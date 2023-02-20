@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Guest List</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<h1 id="list-title">Guest List</h1>
-
-	<form>
-		<label for="list-name">Enter a new name for the list:</label>
-		<input type="text" id="list-name" name="list-name">
-		<button type="submit" id="change-list-name">Change</button>
-	</form>
-
-	<ol>
-		<li>John</li>
-		<li>Jane</li>
-		<li>Bob</li>
-		<li>Sarah</li>
-	</ol>
-
-	<button onclick="savePDF()">Save as PDF</button>
-
-	<script src="script.js"></script>
-</body>
+  <head>
+    <title>Guest Book</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Guest Book</h1>
+      <form>
+        <input type="text" id="guestName" placeholder="Name">
+        <input type="text" id="guestMessage" placeholder="Message">
+        <button type="button" id="addGuestButton">Add Guest</button>
+      </form>
+      <ol id="guestList"></ol>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
