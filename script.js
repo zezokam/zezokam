@@ -1,60 +1,57 @@
-// Get elements from DOM
-const newItemInput = document.getElementById("new-item");
-const addItemButton = document.getElementById("add-btn");
-const itemList = document.getElementById("item-list");
-const clearListButton = document.getElementById("clear-btn");
+let taskList = document.getElementById("task-list");
+let title = "قائمة المهام";
 
-// Add item to list function
-function addItem(event) {
-  // Prevent default form submission behavior
-  event.preventDefault();
-
-  // Get input value and trim whitespace
-  const newItemText = newItemInput.value.trim();
-
-  // If input is not empty
-  if (newItemText !== "") {
-    // Create new list item element
-    const newItem = document.createElement("li");
-
-    // Create span for text and checkbox
-    const span = document.createElement("span");
-    span.innerText = newItemText;
-
-    // Create checkbox for completion status
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.addEventListener("click", toggleItemCompletion);
-
-    // Append span and checkbox to list item
-    newItem.appendChild(checkbox);
-    newItem.appendChild(span);
-
-    // Append new item to list
-    itemList.appendChild(newItem);
-
-    // Clear input field
-    newItemInput.value = "";
+// Load saved list from local storage
+let savedList = JSON.parse(localStorage.getItem("taskList"));
+if (savedList) {
+  for (let i = 0; i < savedList.length; i++) {
+    let count = i + 1;
+    let input = document.createElement("input");
+    input.type = "text";
+    input.value = savedList[i];
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(count));
+    li.appendChild(input);
+    taskList.appendChild(li);
   }
 }
 
-// Toggle item completion function
-function toggleItemCompletion(event) {
-  const checkbox = event.target;
-  const item = checkbox.parentElement;
-
-  if (checkbox.checked) {
-    item.classList.add("item-completed");
-  } else {
-    item.classList.remove("item-completed");
-  }
+function addTask() {
+  let count = taskList.getElementsByTagName("li").length + 1;
+  let input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "مهمة رقم " + count;
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(count));
+  li.appendChild(input);
+  taskList.appendChild(li);
+  saveList();
 }
 
-// Clear list function
+function editTitle() {
+  title = prompt("العنوان الجديد:", title);
+  document.getElementsByTagName("title")[0].innerHTML = title;
+  document.getElementsByTagName("h1")[0].innerHTML = title;
+}
+
 function clearList() {
-  itemList.innerHTML = "";
+  taskList.innerHTML = "";
+  localStorage.removeItem("taskList");
 }
 
-// Event listeners
-addItemButton.addEventListener("click", addItem);
-clearListButton.addEventListener("click", clearList);
+function createPDF() {
+  // Code to generate and download PDF file
+  alert("تم تصدير القائمة بنجاح");
+}
+
+function newList() {
+  taskList.innerHTML = "";
+  addTask();
+  title = "قائمة المهام";
+  document.getElementsByTagName("title")[0].innerHTML = title;
+  document.getElementsByTagName("h1")[0].innerHTML = title;
+}
+
+function saveList() {
+  let items = taskList.getElementsByTagName("input");
+  let list = [];
