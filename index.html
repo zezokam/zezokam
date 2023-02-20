@@ -1,57 +1,109 @@
-let taskList = document.getElementById("task-list");
-let title = "قائمة المهام";
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>قائمة المهام</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-// Load saved list from local storage
-let savedList = JSON.parse(localStorage.getItem("taskList"));
-if (savedList) {
-  for (let i = 0; i < savedList.length; i++) {
-    let count = i + 1;
-    let input = document.createElement("input");
-    input.type = "text";
-    input.value = savedList[i];
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode(count));
-    li.appendChild(input);
-    taskList.appendChild(li);
-  }
-}
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        direction: rtl;
+        text-align: right;
+        background-color: #f2f2f2;
+      }
 
-function addTask() {
-  let count = taskList.getElementsByTagName("li").length + 1;
-  let input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "مهمة رقم " + count;
-  let li = document.createElement("li");
-  li.appendChild(document.createTextNode(count));
-  li.appendChild(input);
-  taskList.appendChild(li);
-  saveList();
-}
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-function editTitle() {
-  title = prompt("العنوان الجديد:", title);
-  document.getElementsByTagName("title")[0].innerHTML = title;
-  document.getElementsByTagName("h1")[0].innerHTML = title;
-}
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
 
-function clearList() {
-  taskList.innerHTML = "";
-  localStorage.removeItem("taskList");
-}
+      ul {
+        padding: 0;
+        margin-bottom: 20px;
+      }
 
-function createPDF() {
-  let pdf = new jsPDF();
+      li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-  taskList.getElementsByTagName("li").forEach((li, index) => {
-    let text = `${index + 1}. ${li.getElementsByTagName("input")[0].value}`;
-    pdf.text(20, (index + 1) * 10, text);
-  });
+      input[type="text"] {
+        flex: 1;
+        margin-right: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        font-size: 1rem;
+      }
 
-  pdf.save("task-list.pdf");
-}
+      button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>قائمة المهام</h1>
+      <ul id="task-list"></ul>
+      <div class="buttons">
+        <button id="add-btn">إضافة مهمة</button>
+        <button id="edit-btn">تعديل العنوان</button>
+        <button id="clear-btn">مسح القائمة</button>
+        <button id="new-btn">قائمة جديدة</button>
+      </div>
+    </div>
 
-function newList() {
-  taskList.innerHTML = "";
-  addTask();
-  title = "قائمة المهام";
-  document.getElementsByTagName("title")[0].innerHTML =
+    <script>
+      let taskList = document.getElementById("task-list");
+      let title = "قائمة المهام";
+
+      // Load saved list from local storage
+      let savedList = JSON.parse(localStorage.getItem("taskList"));
+      if (savedList) {
+        for (let i = 0; i < savedList.length; i++) {
+          let count = i + 1;
+          let input = document.createElement("input");
+          input.type = "text";
+          input.value = savedList[i];
+          let li = document.createElement("li");
+          li.appendChild(document.createTextNode(count));
+          li.appendChild(input);
+          taskList.appendChild(li);
+        }
+      }
+
+      function addTask() {
+        let count = taskList.getElementsByTagName("li").length + 1;
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "مهمة رقم " + count;
+        let li = document.createElement("li");
+        li.appendChild(document.createTextNode(count));
+        li.appendChild(input);
+       
