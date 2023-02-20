@@ -3,40 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>قائمة المهام</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      .container {
-        width: 50%;
-      }
-
-      ul {
-        padding: 0;
-      }
-
-      li {
-        list-style-type: none;
-        display: flex;
-        align-items: center;
-        margin: 10px;
-      }
-
-      input[type="text"] {
-        margin-right: 10px;
-      }
-
-      button {
-        margin: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>قائمة المهام</h1>
@@ -45,60 +12,10 @@
       <button onclick="addTask()">إضافة مهمة</button>
       <button onclick="editTitle()">تعديل العنوان</button>
       <button onclick="clearList()">مسح القائمة</button>
-      <button onclick="generatePDF()">تصدير كملف PDF</button>
+      <button onclick="createPDF()">تصدير كملف PDF</button>
       <button onclick="newList()">قائمة جديدة</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
-    <script>
-      let taskList = document.getElementById("task-list");
-      let title = "قائمة المهام";
-
-      // Load saved list from local storage
-      let savedList = JSON.parse(localStorage.getItem("taskList"));
-      if (savedList) {
-        for (let i = 0; i < savedList.length; i++) {
-          let count = i + 1;
-          let input = document.createElement("input");
-          input.type = "text";
-          input.value = savedList[i];
-          let li = document.createElement("li");
-          li.appendChild(document.createTextNode(count));
-          li.appendChild(input);
-          taskList.appendChild(li);
-        }
-      }
-
-      function addTask() {
-        let count = taskList.getElementsByTagName("li").length + 1;
-        let input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "مهمة رقم " + count;
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(count));
-        li.appendChild(input);
-        taskList.appendChild(li);
-        saveList();
-      }
-
-      function editTitle() {
-        title = prompt("العنوان الجديد:", title);
-        document.getElementsByTagName("title")[0].innerHTML = title;
-        document.getElementsByTagName("h1")[0].innerHTML = title;
-      }
-
-      function clearList() {
-        taskList.innerHTML = "";
-        localStorage.removeItem("taskList");
-      }
-
-      function generatePDF() {
-        const pdf = new jsPDF();
-        const taskItems = document.querySelectorAll("#task-list li input");
-        let y = 20;
-        for (let i = 0; i < taskItems.length; i++) {
-          pdf.text(20, y, taskItems[i].value);
-          y += 10;
-        }
-        pdf.save("task-list.pdf");
-        alert("تم تصدير القائمة بنجاح
+    <script src="script.js"></script>
+  </body>
+</html>
