@@ -1,108 +1,28 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قائمة الضيوف</title>
-  <style>
-    body {
-      font-size: 24px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 36px;
-    }
-    input[type=text] {
-      font-size: 24px;
-      padding: 8px;
-      border-radius: 4px;
-      border: none;
-      margin-bottom: 16px;
-      text-align: center;
-      width: 70%;
-      max-width: 400px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      font-size: 24px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #3e8e41;
-    }
-    #new-list-button {
-      margin-top: 16px;
-    }
-    #list-container {
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: left;
-    }
-    #list-container ol {
-      counter-reset: item;
-      padding-left: 0;
-    }
-    #list-container li {
-      display: block;
-      margin-bottom: 16px;
-      position: relative;
-    }
-    #list-container li:before {
-      content: counter(item) ". ";
-      counter-increment: item;
-      position: absolute;
-      left: -2em;
-    }
-    #list-container .list-title {
-      font-size: 28px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    #list-container .list-title input[type=text] {
-      font-size: 28px;
-      padding: 8px;
-      border-radius: 4px;
-      border: none;
-      margin-bottom: 16px;
-      text-align: center;
-      width: 70%;
-      max-width: 400px;
-    }
-    #list-container .pdf-button {
-      float: right;
-      margin-left: 16px;
-    }
-    #empty-list {
-      font-size: 24px;
-      font-style: italic;
-      margin-top: 16px;
-    }
-  </style>
+  <title>قائمة</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>قائمة الضيوف</h1>
-  <div id="list-container">
-    <div class="list-title">
-      <input type="text" id="list-title-input" value="الضيوف">
-      <button id="pdf-button" class="pdf-button" onclick="savePDF()">حفظ كـ PDF</button>
+  <div class="container">
+    <h1>القائمة</h1>
+    <div class="list-container">
+      <div class="list-title">
+        <input type="text" placeholder="عنوان القائمة" id="list-title">
+      </div>
+      <ol id="list"></ol>
+      <div class="buttons">
+        <button id="add-item-btn">إضافة عنصر</button>
+        <button id="delete-list-btn">حذف القائمة</button>
+        <button id="save-pdf-btn">حفظ كـ PDF</button>
+      </div>
     </div>
-    <ol id="guest-list">
-      <p id="empty-list">لا يوجد ضيوف حتى الآن.</p>
-    </ol>
-    <button id="new-list-button" onclick="newList()">قائمة جديدة</button>
+    <button id="new-list-btn">قائمة جديدة</button>
   </div>
-  
-  <script>
-    var listTitleInput = document.getElementById("list-title-input");
-    var guestList = document.getElementById("guest-list");
 
-    function savePDF() {
-      window.print();
-    }
-
-    function newList() {
-      guestList.innerHTML = '<p id="empty-list">لا يوجد ضيوف
+  <script src="script.js"></script>
+</body>
+</html>
