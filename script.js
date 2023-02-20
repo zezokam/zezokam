@@ -40,18 +40,18 @@ function clearList() {
 }
 
 function createPDF() {
-  // Code to generate and download PDF file
+  let doc = new jsPDF();
+  let listItems = taskList.getElementsByTagName("li");
+
+  for (let i = 0; i < listItems.length; i++) {
+    let itemText = listItems[i].getElementsByTagName("input")[0].value;
+    doc.text((i + 1) + ". " + itemText, 10, 10 + (i * 10));
+  }
+
+  doc.save(title + ".pdf");
   alert("تم تصدير القائمة بنجاح");
 }
 
 function newList() {
   taskList.innerHTML = "";
-  addTask();
-  title = "قائمة المهام";
-  document.getElementsByTagName("title")[0].innerHTML = title;
-  document.getElementsByTagName("h1")[0].innerHTML = title;
-}
-
-function saveList() {
-  let items = taskList.getElementsByTagName("input");
-  let list = [];
+  addTask
