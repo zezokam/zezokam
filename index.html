@@ -1,87 +1,52 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>قائمة المهام</title>
-  <style>
-    /* styles from previous code */
-  </style>
-</head>
-<body>
-  <h1>قائمة المهام</h1>
-  <div class="container">
-    <ul id="task-list"></ul>
-    <button onclick="addTask()">إضافة مهمة</button>
-    <button onclick="editTitle()">تعديل العنوان</button>
-    <button onclick="clearList()">مسح القائمة</button>
-    <button onclick="createPDF()">تصدير كملف PDF</button>
-    <button onclick="newList()">قائمة جديدة</button>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-  <script>
-    let taskList = document.getElementById("task-list");
-    let title = "قائمة المهام";
-    
-    // check if there are saved tasks in local storage
-    if (localStorage.getItem("tasks")) {
-      taskList.innerHTML = localStorage.getItem("tasks");
-    } else {
-      addTask();
-    }
-    
-    function addTask() {
-      let count = taskList.getElementsByTagName("li").length + 1;
-      let input = document.createElement("input");
-      input.type = "text";
-      input.placeholder = "مهمة رقم " + count;
-      let li = document.createElement("li");
-      li.appendChild(document.createTextNode(count));
-      li.appendChild(input);
-      taskList.appendChild(li);
-      
-      // save tasks to local storage
-      localStorage.setItem("tasks", taskList.innerHTML);
-    }
-    
-    function editTitle() {
-      title = prompt("العنوان الجديد:", title);
-      document.getElementsByTagName("title")[0].innerHTML = title;
-      document.getElementsByTagName("h1")[0].innerHTML = title;
-    }
-    
-    function clearList() {
-      taskList.innerHTML = "";
-      
-      // remove tasks from local storage
-      localStorage.removeItem("tasks");
-    }
-    
-    function createPDF() {
-      // create a new jsPDF instance
-      let doc = new jsPDF();
-      
-      // add the task list to the PDF document
-      let count = 1;
-      taskList.getElementsByTagName("li").forEach(function(item) {
-        doc.text(`${count}. ${item.querySelector("input").value}`, 10, count*10);
-        count++;
-      });
-      
-      // save the PDF file
-      doc.save("task-list.pdf");
-    }
-    
-    function newList() {
-      taskList.innerHTML = "";
-      addTask();
-      title = "قائمة المهام";
-      document.getElementsByTagName("title")[0].innerHTML = title;
-      document.getElementsByTagName("h1")[0].innerHTML = title;
-      
-      // remove tasks from local storage
-      localStorage.removeItem("tasks");
-    }
-  </script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Azzan Abdullah Alkamali's Business Card</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .card {
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        margin: auto;
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 28px;
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .contact-info p {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Azzan Abdullah Alkamali</h1>
+      <div class="contact-info">
+        <p>Phone: +96897082333</p>
+        <p>Email: azzan@alkamali.uk</p>
+      </div>
+    </div>
+  </body>
 </html>
