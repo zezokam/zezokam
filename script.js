@@ -1,56 +1,60 @@
-// Get the modal element
-var modal = document.getElementById("myModal");
+// Get elements from DOM
+const newItemInput = document.getElementById("new-item");
+const addItemButton = document.getElementById("add-btn");
+const itemList = document.getElementById("item-list");
+const clearListButton = document.getElementById("clear-btn");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+// Add item to list function
+function addItem(event) {
+  // Prevent default form submission behavior
+  event.preventDefault();
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  // Get input value and trim whitespace
+  const newItemText = newItemInput.value.trim();
 
-// When the user clicks on the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "block";
-};
+  // If input is not empty
+  if (newItemText !== "") {
+    // Create new list item element
+    const newItem = document.createElement("li");
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
+    // Create span for text and checkbox
+    const span = document.createElement("span");
+    span.innerText = newItemText;
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+    // Create checkbox for completion status
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("click", toggleItemCompletion);
+
+    // Append span and checkbox to list item
+    newItem.appendChild(checkbox);
+    newItem.appendChild(span);
+
+    // Append new item to list
+    itemList.appendChild(newItem);
+
+    // Clear input field
+    newItemInput.value = "";
   }
-};
-
-// Change the background color of the page
-document.body.style.background = "#F8E7A2";
-
-// Change the font family of the card elements
-var cardElements = document.getElementsByClassName("card-element");
-for (var i = 0; i < cardElements.length; i++) {
-  cardElements[i].style.fontFamily = "'Roboto', sans-serif";
 }
 
-// Change the font size of the name element
-var nameElement = document.getElementById("name");
-nameElement.style.fontSize = "36px";
+// Toggle item completion function
+function toggleItemCompletion(event) {
+  const checkbox = event.target;
+  const item = checkbox.parentElement;
 
-// Change the font size of the phone and email elements
-var phoneElement = document.getElementById("phone");
-var emailElement = document.getElementById("email");
-phoneElement.style.fontSize = emailElement.style.fontSize = "24px";
+  if (checkbox.checked) {
+    item.classList.add("item-completed");
+  } else {
+    item.classList.remove("item-completed");
+  }
+}
 
-// Change the color of the phone and email elements
-phoneElement.style.color = emailElement.style.color = "#333";
+// Clear list function
+function clearList() {
+  itemList.innerHTML = "";
+}
 
-// Change the background color of the modal
-modal.style.backgroundColor = "#F8E7A2";
-
-// Change the font color of the modal content
-var modalContent = document.getElementsByClassName("modal-content")[0];
-modalContent.style.color = "#333";
-
-// Change the font family of the modal content
-modalContent.style.fontFamily = "'Roboto', sans-serif";
+// Event listeners
+addItemButton.addEventListener("click", addItem);
+clearListButton.addEventListener("click", clearList);
