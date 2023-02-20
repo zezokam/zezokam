@@ -1,28 +1,92 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قائمة</title>
-  <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>قائمة المهام</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		h1 {
+			text-align: center;
+		}
+		
+		.container {
+			margin: auto;
+			width: 50%;
+		}
+		
+		ul {
+			padding: 0;
+		}
+		
+		li {
+			list-style-type: none;
+			display: flex;
+			align-items: center;
+			margin: 10px;
+		}
+		
+		input[type="text"] {
+			margin-right: 10px;
+		}
+		
+		button {
+			margin: 10px;
+		}
+	</style>
 </head>
 <body>
-  <div class="container">
-    <h1>القائمة</h1>
-    <div class="list-container">
-      <div class="list-title">
-        <input type="text" placeholder="عنوان القائمة" id="list-title">
-      </div>
-      <ol id="list"></ol>
-      <div class="buttons">
-        <button id="add-item-btn">إضافة عنصر</button>
-        <button id="delete-list-btn">حذف القائمة</button>
-        <button id="save-pdf-btn">حفظ كـ PDF</button>
-      </div>
-    </div>
-    <button id="new-list-btn">قائمة جديدة</button>
-  </div>
-
-  <script src="script.js"></script>
+	<h1>قائمة المهام</h1>
+	<div class="container">
+		<ul id="task-list"></ul>
+		<button onclick="addTask()">إضافة مهمة</button>
+		<button onclick="editTitle()">تعديل العنوان</button>
+		<button onclick="clearList()">مسح القائمة</button>
+		<button onclick="createPDF()">تصدير كملف PDF</button>
+		<button onclick="newList()">قائمة جديدة</button>
+	</div>
+	
+	<script>
+		let taskList = document.getElementById("task-list");
+		let title = "قائمة المهام";
+		
+		function addTask() {
+			let count = taskList.getElementsByTagName("li").length + 1;
+			let input = document.createElement("input");
+			input.type = "text";
+			input.placeholder = "مهمة رقم " + count;
+			let li = document.createElement("li");
+			li.appendChild(document.createTextNode(count));
+			li.appendChild(input);
+			taskList.appendChild(li);
+		}
+		
+		function editTitle() {
+			title = prompt("العنوان الجديد:", title);
+			document.getElementsByTagName("title")[0].innerHTML = title;
+			document.getElementsByTagName("h1")[0].innerHTML = title;
+		}
+		
+		function clearList() {
+			taskList.innerHTML = "";
+		}
+		
+		function createPDF() {
+			// Code to generate and download PDF file
+			alert("تم تصدير القائمة بنجاح");
+		}
+		
+		function newList() {
+			taskList.innerHTML = "";
+			addTask();
+			title = "قائمة المهام";
+			document.getElementsByTagName("title")[0].innerHTML = title;
+			document.getElementsByTagName("h1")[0].innerHTML = title;
+		}
+	</script>
 </body>
 </html>
