@@ -4,106 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>قائمة المهام</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        direction: rtl;
-        text-align: right;
-        background-color: #f2f2f2;
-      }
-
-      .container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-      }
-
-      ul {
-        padding: 0;
-        margin-bottom: 20px;
-      }
-
-      li {
-        list-style-type: none;
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-
-      input[type="text"] {
-        flex: 1;
-        margin-right: 10px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        font-size: 1rem;
-      }
-
-      button {
-        display: block;
-        margin: 10px auto;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #4CAF50;
-        color: #fff;
-        font-size: 1rem;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1>قائمة المهام</h1>
     <div class="container">
-      <h1>قائمة المهام</h1>
       <ul id="task-list"></ul>
       <div class="buttons">
-        <button id="add-btn">إضافة مهمة</button>
-        <button id="edit-btn">تعديل العنوان</button>
-        <button id="clear-btn">مسح القائمة</button>
-        <button id="new-btn">قائمة جديدة</button>
+        <button id="add-task-btn">إضافة مهمة</button>
+        <button id="edit-title-btn">تعديل العنوان</button>
+        <button id="clear-list-btn">مسح القائمة</button>
+        <button id="new-list-btn">قائمة جديدة</button>
       </div>
     </div>
 
-    <script>
-      let taskList = document.getElementById("task-list");
-      let title = "قائمة المهام";
-
-      // Load saved list from local storage
-      let savedList = JSON.parse(localStorage.getItem("taskList"));
-      if (savedList) {
-        for (let i = 0; i < savedList.length; i++) {
-          let count = i + 1;
-          let input = document.createElement("input");
-          input.type = "text";
-          input.value = savedList[i];
-          let li = document.createElement("li");
-          li.appendChild(document.createTextNode(count));
-          li.appendChild(input);
-          taskList.appendChild(li);
-        }
-      }
-
-      function addTask() {
-        let count = taskList.getElementsByTagName("li").length + 1;
-        let input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "مهمة رقم " + count;
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(count));
-        li.appendChild(input);
-       
+    <script src="app.js"></script>
+  </body>
+</html>
