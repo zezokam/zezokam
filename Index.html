@@ -5,15 +5,22 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>Guest List</h1>
+	<h1 id="list-title">Guest List</h1>
+
 	<form>
-		<label for="name">Name:</label>
-		<input type="text" id="name" name="name" required>
-		<button type="submit">Add</button>
+		<label for="list-name">Enter a new name for the list:</label>
+		<input type="text" id="list-name" name="list-name">
+		<button type="submit" id="change-list-name">Change</button>
 	</form>
-	<ul id="guest-list">
-		<!-- Guest names will be added here dynamically -->
-	</ul>
+
+	<ol>
+		<li>John</li>
+		<li>Jane</li>
+		<li>Bob</li>
+		<li>Sarah</li>
+	</ol>
+
+	<button onclick="savePDF()">Save as PDF</button>
 
 	<script src="script.js"></script>
 </body>
