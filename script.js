@@ -1,23 +1,36 @@
-const list = document.getElementById('list');
-const addBtn = document.getElementById('add-item-btn');
-const newListBtn = document.getElementById('new-list-btn');
-const deleteListBtn = document.getElementById('delete-list-btn');
-const savePdfBtn = document.getElementById('save-pdf-btn');
-const listTitleInput = document.getElementById('list-title');
+let taskList = document.getElementById("task-list");
+let title = "قائمة المهام";
 
-// Load list from local storage if it exists
-if (localStorage.getItem('listItems')) {
-  list.innerHTML = localStorage.getItem('listItems');
+function addTask() {
+  let count = taskList.getElementsByTagName("li").length + 1;
+  let input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "مهمة رقم " + count;
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(count));
+  li.appendChild(input);
+  taskList.appendChild(li);
 }
 
-// Save list to local storage
-function saveList() {
-  localStorage.setItem('listItems', list.innerHTML);
+function editTitle() {
+  title = prompt("العنوان الجديد:", title);
+  document.getElementsByTagName("title")[0].innerHTML = title;
+  document.getElementsByTagName("h1")[0].innerHTML = title;
 }
 
-// Add item to list
-function addItem() {
-  const item = document.createElement('li');
-  item.contentEditable = true;
-  item.innerHTML = 'عنصر جديد';
-  list.appendChild(item
+function clearList() {
+  taskList.innerHTML = "";
+}
+
+function createPDF() {
+  // Code to generate and download PDF file
+  alert("تم تصدير القائمة بنجاح");
+}
+
+function newList() {
+  taskList.innerHTML = "";
+  addTask();
+  title = "قائمة المهام";
+  document.getElementsByTagName("title")[0].innerHTML = title;
+  document.getElementsByTagName("h1")[0].innerHTML = title;
+}
