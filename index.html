@@ -45,10 +45,11 @@
       <button onclick="addTask()">إضافة مهمة</button>
       <button onclick="editTitle()">تعديل العنوان</button>
       <button onclick="clearList()">مسح القائمة</button>
-      <button onclick="createPDF()">تصدير كملف PDF</button>
+      <button onclick="generatePDF()">تصدير كملف PDF</button>
       <button onclick="newList()">قائمة جديدة</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
     <script>
       let taskList = document.getElementById("task-list");
       let title = "قائمة المهام";
@@ -91,13 +92,13 @@
         localStorage.removeItem("taskList");
       }
 
-      function createPDF() {
-        // Code to generate and download PDF file
-        alert("تم تصدير القائمة بنجاح");
-      }
-
-      function newList() {
-        taskList.innerHTML = "";
-        addTask();
-        title = "قائمة المهام";
-        document.getElementsByTagName
+      function generatePDF() {
+        const pdf = new jsPDF();
+        const taskItems = document.querySelectorAll("#task-list li input");
+        let y = 20;
+        for (let i = 0; i < taskItems.length; i++) {
+          pdf.text(20, y, taskItems[i].value);
+          y += 10;
+        }
+        pdf.save("task-list.pdf");
+        alert("تم تصدير القائمة بنجاح
