@@ -1,52 +1,67 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-  direction: rtl;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .container {
-  display: inline-block;
-  margin: 50px auto;
-  text-align: left;
+  text-align: center;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 36px;
+  margin: 0;
   margin-bottom: 20px;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.list-container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px;
+  margin-bottom: 20px;
 }
 
-li {
-  margin-bottom: 10px;
+.list-title input {
+  font-size: 24px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
-input[type="text"] {
-  font-size: 20px;
-  padding: 5px;
-  width: 200px;
+#list {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
-button {
-  font-size: 20px;
-  padding: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.buttons button {
   margin: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #3e8e41;
+#new-list-btn {
+  margin-top: 20px;
 }
 
-.btn-new-list {
+#save-pdf-btn {
   background-color: #008CBA;
+}
+
+#delete-list-btn {
+  background-color: #f44336;
 }
