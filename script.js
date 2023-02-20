@@ -40,18 +40,18 @@ function clearList() {
 }
 
 function createPDF() {
-  let doc = new jsPDF();
-  let listItems = taskList.getElementsByTagName("li");
+  let pdf = new jsPDF();
 
-  for (let i = 0; i < listItems.length; i++) {
-    let itemText = listItems[i].getElementsByTagName("input")[0].value;
-    doc.text((i + 1) + ". " + itemText, 10, 10 + (i * 10));
-  }
+  taskList.getElementsByTagName("li").forEach((li, index) => {
+    let text = `${index + 1}. ${li.getElementsByTagName("input")[0].value}`;
+    pdf.text(20, (index + 1) * 10, text);
+  });
 
-  doc.save(title + ".pdf");
-  alert("تم تصدير القائمة بنجاح");
+  pdf.save("task-list.pdf");
 }
 
 function newList() {
   taskList.innerHTML = "";
-  addTask
+  addTask();
+  title = "قائمة المهام";
+  document.getElementsByTagName("title")[0].innerHTML =
