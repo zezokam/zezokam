@@ -1,31 +1,30 @@
-// Function to add numbering to list items
-function addListNumbers() {
-  var listItems = document.querySelectorAll('ul li');
-  for (var i = 0; i < listItems.length; i++) {
-    listItems[i].innerHTML = (i + 1) + '. ' + listItems[i].innerHTML;
+const guestList = document.getElementById("guest-list");
+const addGuestButton = document.getElementById("add-guest-btn");
+const savePdfButton = document.getElementById("save-pdf-btn");
+const listTitleInput = document.getElementById("list-title");
+
+// Function to add a new guest to the list
+function addGuest() {
+  const guestName = prompt("Enter the guest name:");
+  if (guestName) {
+    const newGuest = document.createElement("li");
+    newGuest.textContent = guestName;
+    guestList.appendChild(newGuest);
   }
 }
 
-// Function to save page as PDF
-function saveAsPDF() {
-  window.print();
-}
-
-// Function to change list title
-function changeListTitle() {
-  var newTitle = prompt("Enter a new title for the list:");
-  if (newTitle) {
-    document.querySelector('h1').innerHTML = newTitle;
+// Function to save the guest list as a PDF
+function savePdf() {
+  const doc = new jsPDF();
+  doc.text(listTitleInput.value, 10, 10);
+  const guests = guestList.getElementsByTagName("li");
+  let y = 20;
+  for (let i = 0; i < guests.length; i++) {
+    doc.text(`${i + 1}. ${guests[i].textContent}`, 10, y);
+    y += 10;
   }
+  doc.save("guest-list.pdf");
 }
 
-// Call functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  addListNumbers();
-
-  var pdfButton = document.querySelector('#pdf-button');
-  pdfButton.addEventListener('click', saveAsPDF);
-
-  var titleButton = document.querySelector('#title-button');
-  titleButton.addEventListener('click', changeListTitle);
-});
+addGuestButton.addEventListener("click", addGuest);
+savePdfButton.addEventListener("click", savePdf);
