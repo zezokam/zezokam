@@ -1,40 +1,23 @@
-const listTitle = document.querySelector("#listTitle");
-const newListBtn = document.querySelector(".btn-new-list");
-const savePDFBtn = document.querySelector(".btn-save-pdf");
-const listItems = document.querySelector("#listItems");
+const list = document.getElementById('list');
+const addBtn = document.getElementById('add-item-btn');
+const newListBtn = document.getElementById('new-list-btn');
+const deleteListBtn = document.getElementById('delete-list-btn');
+const savePdfBtn = document.getElementById('save-pdf-btn');
+const listTitleInput = document.getElementById('list-title');
 
-newListBtn.addEventListener("click", () => {
-  const newListTitle = prompt("Please enter a new list title:");
-  if (newListTitle) {
-    listTitle.innerHTML = newListTitle;
-    listItems.innerHTML = "";
-  }
-});
-
-savePDFBtn.addEventListener("click", () => {
-  const pdf = new jsPDF();
-  pdf.text(listTitle.innerHTML, 20, 20);
-  let y = 40;
-  listItems.querySelectorAll("li").forEach((item) => {
-    pdf.text(item.innerHTML, 20, y);
-    y += 10;
-  });
-  pdf.save("list.pdf");
-});
-
-function addListItem() {
-  const newItem = document.createElement("li");
-  newItem.textContent = prompt("Please enter a new item for the list:");
-  if (newItem.textContent) {
-    listItems.appendChild(newItem);
-  }
+// Load list from local storage if it exists
+if (localStorage.getItem('listItems')) {
+  list.innerHTML = localStorage.getItem('listItems');
 }
 
-listItems.addEventListener("dblclick", (e) => {
-  if (e.target.tagName === "LI") {
-    const updatedItem = prompt("Please enter an updated value:", e.target.textContent);
-    if (updatedItem) {
-      e.target.textContent = updatedItem;
-    }
-  }
-});
+// Save list to local storage
+function saveList() {
+  localStorage.setItem('listItems', list.innerHTML);
+}
+
+// Add item to list
+function addItem() {
+  const item = document.createElement('li');
+  item.contentEditable = true;
+  item.innerHTML = 'عنصر جديد';
+  list.appendChild(item
