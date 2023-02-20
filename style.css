@@ -1,48 +1,54 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+	background-color: #f8f8f8;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 24px;
+	margin: 0;
+	padding: 0;
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 600px;
-  text-align: center;
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 h1 {
-  color: #333;
+	font-size: 48px;
+	margin: 50px 0;
 }
 
-ol {
-  list-style-type: decimal;
-  text-align: left;
-  padding-left: 20px;
+.list-container {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+	display: inline-block;
 }
 
-li {
-  font-size: 18px;
-  margin: 10px 0;
+#guest-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-align: right;
 }
 
-input[type="text"] {
-  padding: 10px;
-  margin: 10px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+#guest-list li::before {
+	content: counter(list-item) ".";
+	counter-increment: list-item;
+	margin-right: 10px;
 }
 
-button {
-  padding: 10px;
-  margin: 10px;
-  font-size: 18px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+#add-list-btn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 24px;
 }
 
-button:hover {
-  background-color: #3e8e41;
+#add-list-btn:hover {
+	background-color: #3e8e41;
 }
