@@ -1,19 +1,63 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>قائمة</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<h1>قائمة</h1>
-		<div class="list-container">
-			<ol id="guest-list">
-			</ol>
-			<button id="add-list-btn">أضف قائمة جديدة</button>
-		</div>
-	</div>
-	<script src="script.js"></script>
-</body>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8">
+    <title>قائمة</title>
+    <style>
+      body {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      #list-container {
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: left;
+      }
+      #list-container ol {
+        counter-reset: guest-counter;
+        list-style-type: none;
+        padding: 0;
+      }
+      #list-container ol li:before {
+        counter-increment: guest-counter;
+        content: counter(guest-counter) ". ";
+      }
+      #add-guest-form {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      #add-guest-form input[type="text"] {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+      }
+      #add-guest-form button {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      #add-list-form button {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>قائمة</h1>
+    <div id="list-container">
+      <ol id="guest-list"></ol>
+    </div>
+    <div id="add-guest-form">
+      <input type="text" id="guest-name-input" placeholder="أدخل اسم الضيف">
+      <button id="add-guest-button">إضافة</button>
+    </div>
+    <div id="add-list-form">
+      <button id="add-list-button">إنشاء قائمة جديدة</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
