@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Guest Book</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <title>Guest List</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="container">
-      <h1>Guest Book</h1>
-      <form>
-        <input type="text" id="guestName" placeholder="Name">
-        <input type="text" id="guestMessage" placeholder="Message">
-        <button type="button" id="addGuestButton">Add Guest</button>
-      </form>
-      <ol id="guestList"></ol>
+      <h1>Guest List</h1>
+      <label for="list-title">List Title:</label>
+      <input type="text" id="list-title" value="My Party Guest List">
+      <ol id="guest-list"></ol>
+      <button id="add-guest-btn">Add Guest</button>
+      <button id="save-pdf-btn">Save as PDF</button>
     </div>
     <script src="script.js"></script>
   </body>
