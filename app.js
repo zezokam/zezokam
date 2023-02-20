@@ -2,61 +2,65 @@
 const taskList = document.getElementById("task-list");
 const addTaskButton = document.getElementById("add-task");
 const editTitleButton = document.getElementById("edit-title");
-const clearListButton = document.getElementById("clear-list");
 const newListButton = document.getElementById("new-list");
+const savePdfButton = document.getElementById("save-pdf");
 const titleElement = document.getElementsByTagName("title")[0];
 const h1Element = document.getElementsByTagName("h1")[0];
 
-// Load saved list from server
-fetch("/tasks.json")
-  .then(response => response.json())
-  .then(data => {
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        let count = i + 1;
-        let input = document.createElement("input");
-        input.type = "text";
-        input.value = data[i];
-        let li = document.createElement("li");
-        li.dir = "rtl";
-        li.appendChild(document.createTextNode(count + ". "));
-        li.appendChild(input);
-        taskList.appendChild(li);
-      }
+// Load saved list from JSON file
+fetch("tasks.json")
+  .then((response) => response.json())
+  .then((data) => {
+    for (let i = 0; i < data.length; i++) {
+      let count = i + 1;
+      let input = document.createElement("input");
+      input.type = "text";
+      input.value = data[i];
+      let li = document.createElement("li");
+      li.appendChild(document.createTextNode(count));
+      li.appendChild(input);
+      taskList.appendChild(li);
     }
-  })
-  .catch(error => {
-    console.error("Failed to load tasks from server:", error);
   });
-
-// Save task list to server
-function saveTaskList() {
-  let tasks = [];
-  let listItems = taskList.getElementsByTagName("li");
-  for (let i = 0; i < listItems.length; i++) {
-    let input = listItems[i].getElementsByTagName("input")[0];
-    tasks.push(input.value);
-  }
-
-  fetch("/tasks.json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(tasks)
-  })
-    .then(response => {
-      console.log("Task list saved successfully:", response);
-    })
-    .catch(error => {
-      console.error("Failed to save task list:", error);
-    });
-}
 
 // Add task to list
 function addTask() {
   let count = taskList.getElementsByTagName("li").length + 1;
   let input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "مهمة جديدة";
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(count));
+  li.appendChild(input);
+  taskList.appendChild(li);
+}
+
+// Edit title
+function editTitle() {
+  let newTitle = prompt("أدخل العنوان الجديد:");
+  if (newTitle) {
+    titleElement.innerHTML = newTitle;
+    h1Element.innerHTML = newTitle;
+  }
+}
+
+// Clear list
+function clearList() {
+  taskList.innerHTML = "";
+}
+
+// Save list as PDF
+function savePDF() {
+  const element = document.getElementById("task-list");
+  html2pdf().from(element).save();
+}
+
+// Add event listeners
+addTaskButton.addEventListener("click", addTask);
+editTitleButton.addEventListener("click", editTitle);
+newListButton.addEventListener("click", clearList);
+savePdfButton.addEventListener("click", savePDF);
+
   input.type = "text";
   input.placeholder = "مهمة جديدة";
   let li = document.createElement("li");
