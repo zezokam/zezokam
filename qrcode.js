@@ -1,19 +1,23 @@
-const generateBtn = document.getElementById('generate-btn');
-const qrContainer = document.getElementById('qr-container');
+// get references to the DOM elements
+const textInput = document.getElementById("text-input");
+const generateButton = document.getElementById("generate-button");
+const qrCodeImage = document.getElementById("qrcode-image");
 
-generateBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    const qrText = document.getElementById('qr-text').value;
-    if (qrText) {
-        const qrCode = new QRCode(qrContainer, {
-            text: qrText,
-            width: 256,
-            height: 256,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    } else {
-        qrContainer.innerHTML = '<p>Please enter text or URL.</p>';
-    }
-});
+// add an event listener to the generate button
+generateButton.addEventListener("click", generateQRCode);
+
+// function to generate the QR code
+function generateQRCode() {
+  // get the text to encode from the text input
+  const text = textInput.value;
+
+  // generate the QR code using the QRCode library
+  const qrCode = new QRCode(qrCodeImage, {
+    text: text,
+    width: 256,
+    height: 256,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+}
