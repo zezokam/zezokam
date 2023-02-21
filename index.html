@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>QR Code Generator</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header>
-		<h1>QR Code Generator</h1>
-	</header>
-	<main>
-		<form>
-			<label for="text">Enter text to generate QR code:</label><br>
-			<textarea id="text" name="text" rows="4" cols="50"></textarea><br>
-			<button type="button" id="generate-button">Generate QR Code</button>
-		</form>
-		<div id="qrcode"></div>
-	</main>
-	<footer>
-		<p>&copy; 2023 QR Code Generator. All rights reserved.</p>
-	</footer>
-	<script src="qrcode.js"></script>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form>
+            <label for="url-input">Enter URL:</label>
+            <input type="url" id="url-input" placeholder="https://www.example.com" required>
+            <button id="generate-btn">Generate QR Code</button>
+        </form>
+        <div id="qrcode"></div>
+    </div>
+    <script src="qrcode.min.js"></script>
+    <script src="qrcode.js"></script>
 </body>
 </html>
