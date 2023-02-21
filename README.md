@@ -1,16 +1,46 @@
-### Hi there 👋
+# QRCode.js
+QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM.
+QRCode.js has no dependencies.
 
-<!--
-**zezokam/zezokam** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## Basic Usages
+```
+<div id="qrcode"></div>
+<script type="text/javascript">
+new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+</script>
+```
 
-Here are some ideas to get you started:
+or with some options
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+```
+<div id="qrcode"></div>
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: "http://jindo.dev.naver.com/collie",
+	width: 128,
+	height: 128,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+</script>
+```
+
+and you can use some methods
+
+```
+qrcode.clear(); // clear the code.
+qrcode.makeCode("http://naver.com"); // make another code.
+```
+
+## Browser Compatibility
+IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
+
+## License
+MIT License
+
+## Contact
+twitter @davidshimjs
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/davidshimjs/qrcodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
