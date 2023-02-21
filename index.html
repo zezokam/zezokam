@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قائمة المهام</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header>
-    <h1>قائمة المهام</h1>
-    <button id="edit-title">تحرير العنوان</button>
-  </header>
-  <main>
-    <ul id="task-list">
-      <!-- tasks will be dynamically added here -->
-    </ul>
-    <button id="add-task">إضافة مهمة</button>
-    <button id="new-list">قائمة جديدة</button>
-    <button id="save-pdf">حفظ كـ PDF</button>
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-  <script src="app.js"></script>
+    <header>
+        <h1>QR Code Generator</h1>
+    </header>
+    <main>
+        <form>
+            <label for="qr-text">Enter text or URL:</label>
+            <input type="text" id="qr-text" placeholder="https://example.com">
+            <button type="submit" id="generate-btn">Generate QR Code</button>
+        </form>
+        <div id="qr-container"></div>
+    </main>
+    <script src="qrcode.js"></script>
 </body>
-
 </html>
