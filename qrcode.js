@@ -1,23 +1,28 @@
-// get references to the DOM elements
-const textInput = document.getElementById("text-input");
-const generateButton = document.getElementById("generate-button");
-const qrCodeImage = document.getElementById("qrcode-image");
+// Get elements
+var generateButton = document.getElementById("generate-button");
+var qrCodeDiv = document.getElementById("qrcode");
 
-// add an event listener to the generate button
-generateButton.addEventListener("click", generateQRCode);
-
-// function to generate the QR code
+// Generate QR code
 function generateQRCode() {
-  // get the text to encode from the text input
-  const text = textInput.value;
+    // Get input text
+    var text = document.getElementById("text").value;
 
-  // generate the QR code using the QRCode library
-  const qrCode = new QRCode(qrCodeImage, {
-    text: text,
-    width: 256,
-    height: 256,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-  });
+    // Check if input is not empty
+    if (text === "") {
+        alert("Please enter some text to generate QR code.");
+        return;
+    }
+
+    // Generate QR code using QRCode.js
+    var qrCode = new QRCode(qrCodeDiv, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
+
+// Attach event listener to generate button
+generateButton.addEventListener("click", generateQRCode);
