@@ -1,28 +1,12 @@
-// Get elements
-var generateButton = document.getElementById("generate-button");
-var qrCodeDiv = document.getElementById("qrcode");
-
 // Generate QR code
-function generateQRCode() {
-    // Get input text
-    var text = document.getElementById("text").value;
-
-    // Check if input is not empty
-    if (text === "") {
-        alert("Please enter some text to generate QR code.");
+document.getElementById('generate-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+    var url = document.getElementById('url-input').value.trim();
+    if (url.length === 0) {
+        alert('Please enter a URL.');
         return;
     }
-
-    // Generate QR code using QRCode.js
-    var qrCode = new QRCode(qrCodeDiv, {
-        text: text,
-        width: 200,
-        height: 200,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
-}
-
-// Attach event listener to generate button
-generateButton.addEventListener("click", generateQRCode);
+    var qrCodeDiv = document.getElementById('qrcode');
+    qrCodeDiv.innerHTML = '';
+    new QRCode(qrCodeDiv, url);
+});
