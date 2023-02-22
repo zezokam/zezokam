@@ -59,12 +59,16 @@ button[type="submit"]:hover {
 }
 
 /* Style the QR code image */
+
 .qr-code {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   border: 10px solid #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 /* Style the error message */
 .error-message {
