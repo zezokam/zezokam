@@ -1,52 +1,74 @@
-.container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+/* Reset default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* Set the font family and size for the entire page */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Add a top-level container to center the page content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the page title */
 h1 {
   font-size: 32px;
   margin-bottom: 20px;
 }
 
+/* Style the input form */
 form {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
-  text-align: left;
 }
 
 input[type="text"] {
-  width: 100%;
+  font-size: 20px;
   padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-bottom: 2px solid #ccc;
   margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button[type="submit"] {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  font-size: 18px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #FFFFFF;
   border: none;
-  background-color: #0077cc;
-  color: #fff;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #0066b3;
+  background-color: #3E8E41;
 }
 
-#qrcode {
-  margin-top: 20px;
-  text-align: center;
+/* Style the QR code image */
+.qr-code {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 10px solid #FFFFFF;
+}
+
+/* Style the error message */
+.error-message {
+  font-size: 20px;
+  color: #FF0000;
+  margin-bottom: 20px;
 }
