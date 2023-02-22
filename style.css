@@ -1,98 +1,76 @@
-/* Reset styles */
+/* Reset default styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body styles */
+/* Set the font family and size for the entire page */
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
-  color: #333333;
-  background-color: #f9f9f9;
 }
 
-/* Container styles */
+/* Add a top-level container to center the page content */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Header styles */
-.header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-/* Title styles */
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  color: #4CAF50;
-}
-
-/* Main styles */
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* QR code container styles */
-.qr-code-container {
-  background-color: #FFFFFF;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-/* QR code styles */
-.qr-code {
-  max-width: 200px;
-}
-
-/* Description styles */
-.description {
-  font-size: 18px;
-  font-weight: bold;
+/* Style the page title */
+h1 {
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
-/* Button styles */
-.button {
-  display: inline-block;
-  padding: 15px 30px;
+/* Style the input form */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  font-size: 20px;
+  padding: 10px;
   background-color: #4CAF50;
   color: #FFFFFF;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
+  border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.button:hover {
-  background-color: #2E8B57;
+button[type="submit"]:hover {
+  background-color: #3E8E41;
 }
 
-/* Footer styles */
-.footer {
-  text-align: center;
-  margin-top: 50px;
+/* Style the QR code image */
+.qr-code {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 10px solid #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.footer p {
-  font-size: 14px;
+/* Style the error message */
+.error-message {
+  font-size: 20px;
+  color: #FF0000;
+  margin-bottom: 20px;
 }
-
-.footer a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline
