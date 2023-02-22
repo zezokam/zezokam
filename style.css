@@ -1,76 +1,78 @@
-/* Reset default styles */
+/* Reset styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Set the font family and size for the entire page */
+/* Body styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  color: #333333;
+  background-color: #f2f2f2;
 }
 
-/* Add a top-level container to center the page content */
+/* Container styles */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Style the page title */
-h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-/* Style the input form */
-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-input[type="text"] {
-  font-size: 20px;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button[type="submit"] {
-  font-size: 20px;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #3E8E41;
-}
-
-/* Style the QR code image */
+/* QR code styles */
 .qr-code {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 400px;
   border: 10px solid #FFFFFF;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Style the error message */
-.error-message {
-  font-size: 20px;
-  color: #FF0000;
+/* Title styles */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
   margin-bottom: 20px;
+}
+
+/* Subtitle styles */
+.subtitle {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #2E8B57;
+}
+
+/* Footer styles */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
