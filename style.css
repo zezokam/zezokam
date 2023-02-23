@@ -78,6 +78,8 @@ button[type="submit"]:hover {
   color: #666666;
   text-align: center;
   margin-top: 40px;
+  background-color: #222222;
+  padding: 20px;
 }
 
 /* Style the error message */
@@ -90,33 +92,27 @@ button[type="submit"]:hover {
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #222;
-    color: #EEE;
+    background-color: #222222;
+    color: #FFFFFF;
   }
-
-  .container {
-    background-color: #444;
+  
+  input[type="text"], button[type="submit"] {
+    background-color: #333333;
+    color: #FFFFFF;
   }
-
-  input[type="text"] {
-    background-color: #333;
-    color: #EEE;
-    border: 1px solid #EEE;
+  
+  label {
+    color: #FFFFFF;
   }
-
-  button[type="submit"] {
-    background-color: #1ABC9C;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #16A085;
-  }
-
+  
+  /* Style the QR code image */
   .qr-code {
-    border: 10px solid #333;
+    border-color: #333333;
   }
-
+  
+  /* Style the footer */
   .footer {
-    color: #AAA;
+    background-color: #333333;
+    color: #FFFFFF;
   }
 }
