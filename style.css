@@ -86,3 +86,37 @@ button[type="submit"]:hover {
   color: #FF0000;
   margin-bottom: 20px;
 }
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: #EEE;
+  }
+
+  .container {
+    background-color: #444;
+  }
+
+  input[type="text"] {
+    background-color: #333;
+    color: #EEE;
+    border: 1px solid #EEE;
+  }
+
+  button[type="submit"] {
+    background-color: #1ABC9C;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #16A085;
+  }
+
+  .qr-code {
+    border: 10px solid #333;
+  }
+
+  .footer {
+    color: #AAA;
+  }
+}
