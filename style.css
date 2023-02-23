@@ -59,14 +59,17 @@ button[type="submit"]:hover {
   background-color: #3E8E41;
 }
 
+/* Center the parent container */
+#qrcode-container {
+  text-align: center;
+}
+
 /* Style the QR code image */
 .qr-code {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   border: 10px solid #FFFFFF;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Style the error message */
