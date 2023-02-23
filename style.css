@@ -72,6 +72,14 @@ button[type="submit"]:hover {
   border: 10px solid #FFFFFF;
 }
 
+/* Style the footer */
+.footer {
+  font-size: 14px;
+  color: #999999;
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* Style the error message */
 .error-message {
   font-size: 20px;
