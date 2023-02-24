@@ -90,9 +90,9 @@ button[type="submit"]:hover {
 }
 
 /* Dark mode styles */
-@media (prefers-color-scheme: dark) {
+@media@media (prefers-color-scheme: dark) {
   body {
-    background-color: #222222;
+    background-color: #202124;
     color: #FFFFFF;
   }
   
@@ -112,7 +112,7 @@ button[type="submit"]:hover {
   
   /* Style the footer */
   .footer {
-    background-color: #333333;
+    background-color: #202124;
     color: #FFFFFF;
   }
 }
