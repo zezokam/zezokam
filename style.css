@@ -74,6 +74,23 @@ button[type="submit"]:hover {
 
 /* Style the footer */
 .footer {
+  width: 100%;
+  background-color: #616060;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 10px;
+  color: white;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+}
+
+.footr {
   font-size: 10px;
   color: #666666;
   text-align: center;
