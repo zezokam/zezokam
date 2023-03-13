@@ -85,17 +85,6 @@ button[type="submit"]:hover {
   color: white;
 }
 
-footer p {
-  margin: 0;
-  padding: 0;
-}
-
-.footr {
-  font-size: 10px;
-  color: #666666;
-  text-align: center;
-  margin-top: 40px;
-}
 
 /* Style the error message */
 .error-message {
